@@ -1,5 +1,7 @@
 package com.gabriel.rstatement.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +21,17 @@ public class PofficersServiceImpl implements PofficersService {
     Mapper mapper;
 
     @Override
-    public Pofficers createPofficer(PofficersDto pofficersDto) {
+    public PofficersDto createPofficer(PofficersDto pofficersDto) {
+        Pofficers pofficers = mapper.convertToEntity(pofficersDto);
+        Pofficers savedPofficers = pofficersRepository.save(pofficers);
        
-        return pofficersRepository.save(mapper.convertToEntity(pofficersDto));
+        return mapper.convertToDto(savedPofficers);
+    }
+
+    @Override
+    public List<PofficersDto> getPofficersDtosList() {
+        List<Pofficers> pofficers = pofficersRepository.findAll();
+        return pofficers.stream().map((pofficer)->mapper.convertToDto(pofficer)).toList();
     }
 
 }

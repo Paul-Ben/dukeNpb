@@ -1,8 +1,14 @@
 package com.gabriel.rstatement.service;
 
+import java.util.List;
+
 import com.gabriel.rstatement.dto.StudentDataDto;
-import com.gabriel.rstatement.models.StudentData;
+import com.gabriel.rstatement.exceptions.ResourceNotFoundException;
 
 public interface StudentDataService {
-    StudentData createStudentData(StudentDataDto StudentDataDto);
+    StudentDataDto createStudentData(StudentDataDto StudentDataDto);
+    List<StudentDataDto> getAllStudentData();
+    StudentDataDto getStudentDataById(Long id) throws ResourceNotFoundException;
+    StudentDataDto updateStudentData(StudentDataDto studentDataDto, Long id);
+    void deleteStudentDatabyId(Long id);
 }
