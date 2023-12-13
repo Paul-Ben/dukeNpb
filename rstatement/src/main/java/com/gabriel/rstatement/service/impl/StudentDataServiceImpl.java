@@ -1,6 +1,7 @@
 package com.gabriel.rstatement.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,17 +34,19 @@ public class StudentDataServiceImpl implements StudentDataService {
         return studentDatas.stream().map((studentData)->mapper.convertToStudentDataDto(studentData)).toList();
     }
 
-    @Override
-    public StudentDataDto getStudentDataById(Long id) {
-        StudentData studentDataById = studentDataRepository.findById(id).get();
+    // @Override
+    // public StudentDataDto getStudentDataById(Long id) {
+    //     StudentData studentDataById = studentDataRepository.findById(id).get();
 
-        if (studentDataRepository.existsById(id)) {
-            return mapper.convertToStudentDataDto(studentDataById);
-        }else{
-            throw new ResourceNotFoundException("Resource with this id "+id+" does not exist.");
-        }
-        
-    }
+    //     if (studentDataRepository.existsById(studentDataById.getId())) {
+    //         System.out.println("It Exists!!!!!");
+    //         StudentDataDto studentDataDto = mapper.convertToStudentDataDto(studentDataById);
+    //         return studentDataDto;
+    //     }else{
+    //         throw new ResourceNotFoundException("Resource with this id "+id+" does not exist.");
+    //     }
+    
+    // }
 
     @Override
     public void deleteStudentDatabyId(Long id) {
@@ -57,7 +60,6 @@ public class StudentDataServiceImpl implements StudentDataService {
         studentToUpdate.setClassOfDegree(studentDataDto.getClassOfDegree());
         studentToUpdate.setCourse(studentDataDto.getCourse());
         studentToUpdate.setDateOfSenateApproval(studentDataDto.getDateOfSenateApproval());
-        studentToUpdate.setId(studentDataDto.getId());
         studentToUpdate.setFirstName(studentDataDto.getFirstName());
         studentToUpdate.setLastName(studentDataDto.getLastName());
         studentToUpdate.setMatNumber(studentDataDto.getMatNumber());
@@ -68,6 +70,19 @@ public class StudentDataServiceImpl implements StudentDataService {
         StudentData savedStudentData = studentDataRepository.save(studentToUpdate);
 
         return mapper.convertToStudentDataDto(savedStudentData);
+    }
+
+    @Override
+    public StudentDataDto getAStudentDataById(Long id) throws ResourceNotFoundException {
+        Optional<StudentData> studentDataById = studentDataRepository.findById(id);
+
+        if (studentDataById.isPresent()) {
+            StudentDataDto studentDataDto = mapper.convertToStudentDataDto(studentDataById.get());
+
+            return studentDataDto;
+        }else{
+            throw new ResourceNotFoundException("Resource with this id "+id+" does not exist.");
+        }
     }
     
 }

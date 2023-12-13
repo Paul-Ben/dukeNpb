@@ -37,7 +37,7 @@ public class StudentDataRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<StudentDataDto> getStudentDataById(@PathVariable Long id) {
-        StudentDataDto studentDataById = studentDataService.getStudentDataById(id);
+        StudentDataDto studentDataById = studentDataService.getAStudentDataById(id);
         return ResponseEntity.ok(studentDataById);
     }
 
