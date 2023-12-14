@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <title>Statement</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2> Hello Statement!!!! </h2>
+                
+            </div>
+            <div>
+                <table class="table table-bordered">
+                    <thead>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Mat No.</th>
+                    </thead>
+                    <tbody>
+                        <tr th:each="student_details : ${details}">
+                            <td th:text="${student_details.id}"></td>
+                            <td th:text="${student_details.firstName}"></td>
+                            <td th:text="${student_details.lastName}"></td>
+                            <td th:text="${student_details.matNumber}"></td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>
