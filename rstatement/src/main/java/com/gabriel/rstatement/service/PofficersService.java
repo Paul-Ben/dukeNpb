@@ -7,4 +7,5 @@ import com.gabriel.rstatement.dto.PofficersDto;
 public interface PofficersService {
     PofficersDto createPofficer(PofficersDto pofficersDto);
     List<PofficersDto> getPofficersDtosList();
+    PofficersDto findbyOffice(String office);
 }

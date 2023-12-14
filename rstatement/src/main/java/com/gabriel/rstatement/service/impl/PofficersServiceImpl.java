@@ -34,4 +34,15 @@ public class PofficersServiceImpl implements PofficersService {
         return pofficers.stream().map((pofficer)->mapper.convertToDto(pofficer)).toList();
     }
 
+
+
+    @Override
+    public PofficersDto findbyOffice(String office) {
+        Pofficers pofficers = pofficersRepository.findByOffice(office).get();
+        PofficersDto pofficersDto = mapper.convertToDto(pofficers);
+        return pofficersDto;
+    }
+
+    
+
 }
