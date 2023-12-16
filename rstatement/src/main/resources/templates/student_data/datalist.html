@@ -7,13 +7,36 @@
     <title>Statement Lists</title>
 </head>
 <body>
+  <!-- Nav Section -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{/student}">Statements</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" th:href="@{/student/create}">Add Statement <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Manage Statement</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <div class="container">
+        
+    </div>
     <div class="container mt-5">
-        <div class="row justify-content-center">
+       
+          <!-- Main Section -->
+        <div class="row justify-content-center mt-4">
             <h3>Statement Lists</h3>
             <table class="table table-stripped table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                       
                         <th>Matriculation Number</th>
                         <th>Student Name</th>
                         <th>Action</th>
@@ -21,10 +44,10 @@
                 </thead>
                 <tbody>
                     <tr th:each="studentData : ${studentData}">
-                        <td th:th:text="${studentData.id}"></td>
+                        
                         <td scope="row" th:text="${studentData.matNumber}"></td>
                         <td th:text="${studentData.firstName+' '+studentData.middleName+' '+studentData.lastName}"></td>
-                        <td><span ><a class="badge badge-pill badge-primary" th:href="@{/statement/{id}(id = ${studentData.id})}">Statement</a></span></td>
+                        <td><span ><a class="badge badge-primary" th:href="@{/statement/{id}(id = ${studentData.id})}">Statement</a></span></td>
                     </tr>
                     <tr>
                         <td scope="row"></td>

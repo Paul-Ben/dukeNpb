@@ -1,61 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
   <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
+
 <body>
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
+
+  <!-- Nav Section -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{/student}">Statements</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" th:href="@{/student/create}">Add Statement <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Manage Statement</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid mt-2">
+
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-8">
         <div class="card">
           <div class="card-header">
             <h3>Add Student Statement Record.</h3>
           </div>
           <div class="card-body">
             <form action="/student/created" method="post">
-              <div class="form-group">
-                <label for="matNumber">Matriculation Number:</label>
-                <input type="text" class="form-control" id="username" name="matNumber" required>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="matNumber">Matriculation Number:</label>
+                  <input type="text" class="form-control" id="username" name="matNumber" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="firstName">First Name:</label>
+                  <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="middleName">Middle Name:</label>
+                  <input type="text" class="form-control" id="middleName" name="middleName" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="lastName">Last Name:</label>
+                  <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="course">Course of Study:</label>
+                  <input type="course" class="form-control" id="course" name="course" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="sessionAdmmitted">Session Admitted:</label>
+                  <input type="date" class="form-control" id="sessionAdmmitted" name="sessionAdmmitted" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="sessionGraduated">Session Graduated:</label>
+                  <input type="date" class="form-control" id="sessionGraduated" name="sessionGraduated" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="cgpa">CGPA:</label>
+                  <input type="text" class="form-control" id="cgpa" name="cgpa" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="classOfDegree">Class of Degree:</label>
+                  <input type="text" class="form-control" id="classOfDegree" name="classOfDegree" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="dateOfSenateApproval">Date of Senate Approval:</label>
+                  <input type="date" class="form-control" id="dateOfSenateApproval" name="dateOfSenateApproval"
+                    required>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="firstName">First Name:</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" required>
-              </div>
-              <div class="form-group">
-                <label for="middleName">Middle Name:</label>
-                <input type="text" class="form-control" id="middleName" name="middleName" required>
-              </div>
-              <div class="form-group">
-                <label for="lastName">Last Name:</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" required>
-              </div>
-              <div class="form-group">
-                <label for="course">Course of Study:</label>
-                <input type="course" class="form-control" id="course" name="course" required>
-              </div>
-              <div class="form-group">
-                <label for="sessionAdmmitted">Session Admitted:</label>
-                <input type="date" class="form-control" id="sessionAdmmitted" name="sessionAdmmitted" required>
-              </div>
-              <div class="form-group">
-                <label for="sessionGraduated">Session Graduated:</label>
-                <input type="date" class="form-control" id="sessionGraduated" name="sessionGraduated" required>
-              </div>
-              <div class="form-group">
-                <label for="cgpa">CGPA:</label>
-                <input type="text" class="form-control" id="cgpa" name="cgpa" required>
-              </div>
-              <div class="form-group">
-                <label for="classOfDegree">Class of Degree:</label>
-                <input type="text" class="form-control" id="classOfDegree" name="classOfDegree" required>
-              </div>
-              <div class="form-group">
-                <label for="dateOfSenateApproval">Date of Senate Approval:</label>
-                <input type="date" class="form-control" id="dateOfSenateApproval" name="dateOfSenateApproval" required>
-              </div>
+
+
+
               <!-- <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
                 <label class="form-check-label" for="terms">I agree to the terms and conditions.</label>
@@ -68,8 +97,12 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdzPVBDDUx4uou3j17ivfc93k5pa5z5n17zbqEXWsSHweX1t9vp5/kP67656u" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/acPCnTmeFUK5TlXn75d+65f4CQzCn3mRW55qP46u3jOhnKq4/xRL1hKXoC/k" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-Fy6sUX9zoT8YXojGtqibIUCAUG66j5sPoI/n3aIPMX4U56yRoR/mmDkGO7gyqV7" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdzPVBDDUx4uou3j17ivfc93k5pa5z5n17zbqEXWsSHweX1t9vp5/kP67656u" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/acPCnTmeFUK5TlXn75d+65f4CQzCn3mRW55qP46u3jOhnKq4/xRL1hKXoC/k" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-Fy6sUX9zoT8YXojGtqibIUCAUG66j5sPoI/n3aIPMX4U56yRoR/mmDkGO7gyqV7" crossorigin="anonymous"></script>
 </body>
+
 </html>
