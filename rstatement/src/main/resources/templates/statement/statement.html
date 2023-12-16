@@ -1,39 +1,91 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <title>Statement</title>
 </head>
-<body>
-    <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <h2> Hello Statement!!!! </h2>
-                
-            </div>
-            <div>
-                <table class="table table-bordered">
-                    <thead>
-                        <th>ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Mat No.</th>
-                    </thead>
-                    <tbody>
-                        <tr th:each="student_details : ${details}">
-                            <td th:text="${student_details.id}"></td>
-                            <td th:text="${student_details.firstName}"></td>
-                            <td th:text="${student_details.lastName}"></td>
-                            <td th:text="${student_details.matNumber}"></td>
-                        </tr>
-                    </tbody>
-                    
-                </table>
-            </div>
-        </div>
-    </div>
-   
+
+<body style="margin:0">
+
+    <table  width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr valign="top">
+            <td colspan="3" align="center" valign="top"><strong><span
+                        style="text-align: center; font-weight: bold; font-size: 40px;">BENUE STATE
+                        UNIVERSITY</span></strong><br>
+                <span style="text-align: center; font-weight: bold; font-size: 25px;">MAKURDI, NIGERIA</span>
+                <br>
+                <span class="" style="color:#0C3;font-size:25px;">OFFICE OF THE REGISTRAR</span></p>
+            </td>
+        </tr>
+        <tr th:each="details : ${details}">
+            <td width="34%" valign="top"><span
+                    style="color:#900; size:12px; font:bold">VICE-CHANCELLOR:</span><br><strong>PROF. TOR JOE
+                    IORAPUU</strong><span><br>B.A, M.A,PhD(Jos),fsonta, KSM<br><br>
+                    <span style="color:#900; size:12px; font:bold">REGISTRAR:</span><br>
+                    <span style="font-weight: bold; font-size:14px">DR. MRS. MFAGA MODOM, MNIM</span><br><span>DIL(Benue
+                        Poly); B.A.(Jos)M.A.(BSU)</span><br><span>PhD(BSU);PGDPA(UMM)</span><br><br><span >
+                        Our Ref: <span th:text="${details.matNumber}"></span><br>
+                        Your Ref:.................................
+                    </span></td>
+            <td width="31%" align="center" valign="top"><img th:src="@{/images/bsulogo.jpeg}" width="146" height="154"
+                    alt="logo" /></td>
+            <td width="35%" valign="top"><span>P.M.B. 102119</span><br>Makurdi, Nigeria<br><span
+                    style="color: #096">TELEGRAMS:UNIBENUE</span><br><span>www.bsum.edu.ng<br>email:registrar@bsum.edu.ng</span>
+                <br>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                <table width="80%" border="0" cellspacing="0" cellpadding="0" align="center">
+                    <td colspan="3" align="center"><span style="font-size:24px; " ><strong><u>STATEMENT OF
+                                    RESULT</u></strong></span><br>
+                        <p align="justify">
+                            This is to certify that <strong th:text="${details.firstName}+' '+${details.middleName}+' '+${details.lastName} ">
+                           
+                            </strong> having studied at Benue State University for the period of <strong th:text="${details.sessionAdmmitted}">
+                                
+                            </strong> academic sessions, has fulfilled the conditions for the award of <strong th:text="${details.course}">
+                                
+                            </strong> with <strong th:text="${details.classOfDegree}">
+                               
+                            </strong>
+                        <p align="justify">
+
+                            His/Her effective date of graduation as approved by the Senate of Benue State University is
+                            <strong th:text="${details.dateOfSenateApproval}">
+                                
+                            </strong>
+
+                        <p align="justify">
+                            This Statement of Result is valid for two(2) years.
+
+                        <p align="justify">
+                            The Certificate will be issued to him/her in due course.
+
+        </tr>
+        <br><br><br>
+        <tr>
+            <td>
+                <span>
+                    <br><br><br>
+                    <strong>Aondover Zwawua,</strong> MCIA<br><em>Academic Officer</em><br>for: Registrar
+
+                </span>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                <div align="center"><img src="data:image/jpg;base64,<%=qr%>" width="240" height="300" /></div>
+            </td>
+        </tr>
+
+    </table>
 </body>
+
 </html>

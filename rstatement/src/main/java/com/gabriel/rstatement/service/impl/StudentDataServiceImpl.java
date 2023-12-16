@@ -1,5 +1,7 @@
 package com.gabriel.rstatement.service.impl;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +14,7 @@ import com.gabriel.rstatement.mappers.Mapper;
 import com.gabriel.rstatement.models.StudentData;
 import com.gabriel.rstatement.repositories.StudentDataRepository;
 import com.gabriel.rstatement.service.StudentDataService;
+
 @Service
 public class StudentDataServiceImpl implements StudentDataService {
 
@@ -24,6 +27,7 @@ public class StudentDataServiceImpl implements StudentDataService {
     @Override
     public StudentDataDto createStudentData(StudentDataDto StudentDataDto) {
         StudentData studentData = mapper.convertToStudentDataEntity(StudentDataDto);
+        studentData.setTimeStamp(Date.from(Instant.now()));
         StudentData savedStudentData = studentDataRepository.save(studentData);
         return mapper.convertToStudentDataDto(savedStudentData);
     }
@@ -31,21 +35,23 @@ public class StudentDataServiceImpl implements StudentDataService {
     @Override
     public List<StudentDataDto> getAllStudentData() {
         List<StudentData> studentDatas = studentDataRepository.findAll();
-        return studentDatas.stream().map((studentData)->mapper.convertToStudentDataDto(studentData)).toList();
+        return studentDatas.stream().map((studentData) -> mapper.convertToStudentDataDto(studentData)).toList();
     }
 
     // @Override
     // public StudentDataDto getStudentDataById(Long id) {
-    //     StudentData studentDataById = studentDataRepository.findById(id).get();
+    // StudentData studentDataById = studentDataRepository.findById(id).get();
 
-    //     if (studentDataRepository.existsById(studentDataById.getId())) {
-    //         System.out.println("It Exists!!!!!");
-    //         StudentDataDto studentDataDto = mapper.convertToStudentDataDto(studentDataById);
-    //         return studentDataDto;
-    //     }else{
-    //         throw new ResourceNotFoundException("Resource with this id "+id+" does not exist.");
-    //     }
-    
+    // if (studentDataRepository.existsById(studentDataById.getId())) {
+    // System.out.println("It Exists!!!!!");
+    // StudentDataDto studentDataDto =
+    // mapper.convertToStudentDataDto(studentDataById);
+    // return studentDataDto;
+    // }else{
+    // throw new ResourceNotFoundException("Resource with this id "+id+" does not
+    // exist.");
+    // }
+
     // }
 
     @Override
@@ -80,9 +86,9 @@ public class StudentDataServiceImpl implements StudentDataService {
             StudentDataDto studentDataDto = mapper.convertToStudentDataDto(studentDataById.get());
 
             return studentDataDto;
-        }else{
-            throw new ResourceNotFoundException("Resource with this id "+id+" does not exist.");
+        } else {
+            throw new ResourceNotFoundException("Resource with this id " + id + " does not exist.");
         }
     }
-    
+
 }

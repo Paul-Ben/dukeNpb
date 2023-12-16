@@ -1,5 +1,6 @@
 package com.gabriel.rstatement.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,7 @@ import lombok.Setter;
 public class Pofficers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column()
     private Long id;
     private String title;
     private String firstName;

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gabriel.rstatement.dto.StudentDataDto;
 import com.gabriel.rstatement.service.PofficersService;
 import com.gabriel.rstatement.service.StudentDataService;
+
 @Controller
 @RequestMapping("/statement")
 public class StatementController {
@@ -19,14 +20,19 @@ public class StatementController {
 
     @Autowired
     PofficersService pofficersService;
+   
 
     @GetMapping("/{id}")
     public String generateStatement(StudentDataDto studentDataDto, Model model, @PathVariable Long id) {
 
-        StudentDataDto details = studentDataService.getAStudentDataById(id);
+        try {
+            StudentDataDto details = studentDataService.getAStudentDataById(id);
 
-        model.addAttribute("details", details);
+            model.addAttribute("details", details);
 
-        return "/statement/statement";
+            return "/statement/statement";
+        } catch (Exception e) {
+            return "statement/error";
+        }
     }
 }
