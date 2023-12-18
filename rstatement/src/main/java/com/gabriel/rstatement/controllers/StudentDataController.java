@@ -1,5 +1,6 @@
 package com.gabriel.rstatement.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.gabriel.rstatement.dto.StudentDataDto;
+import com.gabriel.rstatement.models.StudentData;
 import com.gabriel.rstatement.service.StudentDataService;
 @Controller
 @RequestMapping("/student")
@@ -67,5 +71,25 @@ public class StudentDataController {
         studentDataService.deleteStudentDatabyId(id);
 
         return "Data deleted";
+    }
+
+    @GetMapping("/uploadForm")
+    public String uploadForm(){
+        return "/student_data/uploadForm";
+    }
+
+    @PostMapping("/upload")
+    public String uploadStudnetData(@RequestParam("file") MultipartFile file) throws IOException {
+        studentDataService.saveFromCsv(file);
+        return "/student_data/uploadForm";   
+     }
+
+    @GetMapping("/{matNumber}")
+    public String getByMatricNumber(@RequestParam String matNumber, Model model){
+        StudentData studentData1 = studentDataService.findByMatNumber(matNumber);
+        Long studentId = studentData1.getId();
+        StudentData studentData = studentDataService.getStudentDataByID(studentId);
+        model.addAttribute("studentData", studentData);
+        return "/student_data/search_result";
     }
 }
