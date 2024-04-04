@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+
+<body>
+    <div th:fragment="header">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+        <!-- Nav Section -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" th:href="@{/student}">Statements</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/student/create}">Add Statement <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/student/uploadForm}">Upload File</a>
+                    </li>
+                    <li class="nav-item align-right">
+                        <div>
+                            <form action="/student/result" method="get">
+                                <div class="input-group">
+                                    <input type="text" name="matNumber" class="form-control rounded"
+                                        placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                    <button type="submit" class="btn btn-outline-primary"
+                                        data-mdb-ripple-init>search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</body>
+
+</html>

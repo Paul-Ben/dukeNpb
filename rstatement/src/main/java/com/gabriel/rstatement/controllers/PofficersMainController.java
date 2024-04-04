@@ -22,6 +22,7 @@ public class PofficersMainController {
         return "/pofficers/create";
     }
 
+    @SuppressWarnings("null")
     @PostMapping("/create-pofficer/create")
     public String createPofficers(Model model, PofficersDto pofficersDto) {
 
@@ -39,6 +40,7 @@ public class PofficersMainController {
 
     }
 
+    @SuppressWarnings("null")
     @GetMapping("/pofficer/{office}")
     public String getPofficersOffice(@PathVariable String office, Model model) {
         PofficersDto pofficersDto = pofficersService.findbyOffice(office);

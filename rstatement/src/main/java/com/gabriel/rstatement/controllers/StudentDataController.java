@@ -20,15 +20,16 @@ import org.springframework.web.multipart.MultipartFile;
 import com.gabriel.rstatement.dto.StudentDataDto;
 import com.gabriel.rstatement.models.StudentData;
 import com.gabriel.rstatement.service.StudentDataService;
+
 @Controller
 @RequestMapping("/student")
 public class StudentDataController {
-     @Autowired
+    @Autowired
     StudentDataService studentDataService;
 
     // http://localhost:8080/student/create
     @GetMapping("/create")
-    public String createForm(){
+    public String createForm() {
         return "/student_data/create";
     }
 
@@ -53,7 +54,7 @@ public class StudentDataController {
         return "/student_data/show";
     }
 
-    public String showUpdateForm(Long id){
+    public String showUpdateForm(Long id) {
 
         return "/";
     }
@@ -74,22 +75,27 @@ public class StudentDataController {
     }
 
     @GetMapping("/uploadForm")
-    public String uploadForm(){
+    public String uploadForm() {
         return "/student_data/uploadForm";
     }
 
     @PostMapping("/upload")
     public String uploadStudnetData(@RequestParam("file") MultipartFile file) throws IOException {
         studentDataService.saveFromCsv(file);
-        return "/student_data/uploadForm";   
-     }
+        return "/student_data/uploadForm";
+    }
 
-    @GetMapping("/{matNumber}")
-    public String getByMatricNumber(@RequestParam String matNumber, Model model){
-        StudentData studentData1 = studentDataService.findByMatNumber(matNumber);
-        Long studentId = studentData1.getId();
-        StudentData studentData = studentDataService.getStudentDataByID(studentId);
-        model.addAttribute("studentData", studentData);
-        return "/student_data/search_result";
+    @GetMapping("/result")
+    public String getByMatricNumber(@RequestParam String matNumber, Model model) {
+        try {
+            StudentData studentData1 = studentDataService.findByMatNumber(matNumber);
+            Long studentId = studentData1.getId();
+            StudentData studentData = studentDataService.getStudentDataByID(studentId);
+            model.addAttribute("studentData", studentData);
+            return "/student_data/search_result";
+        } catch (Exception e) {
+            return "/errors/resourcenotfound";
+        }
+
     }
 }

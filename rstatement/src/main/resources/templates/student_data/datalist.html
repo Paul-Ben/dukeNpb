@@ -2,49 +2,31 @@
 <html lang="en" xmlns="https://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <div th:replace="~{/includes/header :: header}">
+
+  </div>
   <title>Statement Lists</title>
 </head>
 
 <body style="background-color: rgb(237, 239, 241);">
-  <!-- Nav Section -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" th:href="@{/student}">Statements</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" th:href="@{/student/create}">Add Statement <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/student/uploadForm}">Upload File</a>
-        </li>
-        <li class="nav-item align-right">
-          <div >
-            <form action="/student/{matNumber}" method="get">
-              <div class="input-group">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
-              </div>
-            </form>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
   <div class="container">
 
   </div>
   <div class="container mt-5">
 
-   
-    
-    
+    <!-- <div class="row col-md-4">
+      <form action="/student/result" method="get">
+        <div class="form-group">
+          <label for="">Search</label>
+          <input type="text" name="matNumber" id="" class="form-control" placeholder="" aria-describedby="helpId">
+          <small id="helpId" class="text-muted">Help text</small>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+      </form>
+
+    </div> -->
+
+
     <!-- Main Section -->
     <div class="row justify-content-center mt-4">
       <h3>Statement Lists</h3>
@@ -78,6 +60,8 @@
 
 
 
+  </div>
+  <div th:replace="~{/includes/footscript :: footer}">
   </div>
 
 </body>

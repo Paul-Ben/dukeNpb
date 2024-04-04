@@ -2,32 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <div th:replace="~{/includes/header :: header}">
+
+  </div>
   <title>Add Statement</title>
-  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  
 </head>
 
 <body style="background-color: rgb(237, 239, 241);">
 
-  <!-- Nav Section -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" th:href="@{/student}">Statements</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" th:href="@{/student/create}">Add Statement <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/student/uploadForm}">Upload File</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
 
   <div class="container-fluid mt-2">
 
@@ -89,7 +72,8 @@
       </div>
     </div>
   </div>
-
+  <div th:replace="~{/includes/footscript :: footer}">
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdzPVBDDUx4uou3j17ivfc93k5pa5z5n17zbqEXWsSHweX1t9vp5/kP67656u" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
